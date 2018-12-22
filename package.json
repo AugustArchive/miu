@@ -1,9 +1,8 @@
 {
     "name": "@maika.xyz/miu",
     "description": "Core components that Maika uses (extra dependencies).",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "displayName": "Miu",
-    "private": false,
     "dependencies": {
         "node-fetch": "2.3.0"
     },
