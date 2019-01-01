@@ -1,12 +1,13 @@
 {
     "name": "@maika.xyz/miu",
     "description": "Core components that Maika uses (extra dependencies).",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "displayName": "Miu",
     "dependencies": {
-        "node-fetch": "2.3.0"
+        "axios": "0.18.0"
     },
     "author": "auguwu",
     "license": "MIT",
-    "main": "lib/index.js"
+    "main": "lib/index.js",
+    "types": "index.d.ts"
 }
