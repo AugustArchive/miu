@@ -43,6 +43,8 @@ declare module '@maika.xyz/miu' {
         constructor(ua: string);
 
         public getCharacter(character: "akari" | "hinako" | "noel" | "ren" | "sagiri" | "maika" | "mitsuha"): Promise<CharacterModel>;
+        public getSubreddit(subreddit: string, sortedBy: 'new' | 'top' | 'hot'): Promise<SubredditModel>;
+        public getFeed(): Promise<AnimeFeedModel>;
     }
 
     /**
@@ -54,30 +56,118 @@ declare module '@maika.xyz/miu' {
     function ms(x: string | number, options: any): number;
 
     /** the osu!client for accessing the osu!api. */
-    export class OsuClient {}
+    export class OsuClient {
+        constructor(key: string);
+
+        public getUser(user: string, mode: 0 | 1 | 2 | 3): Promise<UserModel>;
+        public getBeatmap(id: string): Promise<BeatmapModel>;
+    }
 
     /** The wolke client for accessing the weeb.sh API */
-    export class WeebClient {}
+    export class WeebClient {
+        constructor(key: string);
+
+        public getRandomImage(type: string): Promise<RandomImageModel>;
+    }
 
     // Models
     /** The anilist model */
-    export interface AniListModel {}
+    export interface AniListModel {
+        id: string;
+        title: string;
+        description: string;
+        genres: string[];
+        images: {
+            large: string;
+        };
+        score: string;
+        characters: string;
+        episodes: string;
+    }
 
     /** The character model for lolis.services */
-    export interface CharacterModel {}
+    export interface CharacterModel {
+        url: string;
+        anime: string;
+    }
 
     /** The subreddit model for lolis.services */
-    export interface SubredditModel {}
+    export interface SubredditModel {
+        title: string;
+        url: string;
+        image: string;
+        description: string;
+        createdAt: string;
+    }
 
     /** The anime feed model for lolis.services */
-    export interface AnimeFeedModel {}
+    export interface AnimeFeedModel {
+        name: string;
+        genre: string;
+        publishedAt: string;
+    }
 
     /** The osu!user model for the osu!api */
-    export interface UserModel {}
+    export interface UserModel {
+        id: string;
+        username: string;
+        joinedAt: string;
+        counts: {
+            300: number;
+            100: number;
+            50: number;
+        };
+        playcount: string;
+        scores: {
+            ranked: string;
+            total: string;
+        }
+        pp: number;
+        rank: string;
+        level: number;
+        accuracy: number;
+        count_ranks: {
+            SSH: number;
+            SS: number;
+            SH: number;
+            S: number;
+            A: number;
+        };
+        country: string;
+        countryRank: number;
+    }
 
     /** The osu!beatmap model for the osu!api */
-    export interface BeatmapModel {}
+    export interface BeatmapModel {
+        id: string;
+        state: string;
+        cs: number;
+        od: number;
+        ar: number;
+        hd: number;
+        mode: string;
+        artist: string;
+        title: string;
+        creator: string;
+        bpm: number;
+        source: string;
+        language: string;
+        favourites: number;
+        plays: {
+            passed: number;
+            played: number;
+        }
+        maxCombo: number;
+        difficulty: number;
+    }
 
     /** The random image model for weeb.sh */
-    export interface RandomImageModel {}
+    export interface RandomImageModel {
+        id: string;
+        type: string;
+        nsfw: boolean;
+        hidden: boolean;
+        url: string;
+        tags: string;
+    }
 }
