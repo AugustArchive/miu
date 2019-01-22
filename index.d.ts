@@ -29,7 +29,22 @@ declare module '@maika.xyz/miu' {
      * @param utc UTC conversion
      * @param gmt GMT conversion
      */
-    function dateformat(date: any, mask: any, utc?: any, gmt?: any): any;
+    function dateformat(date: string | number | Date, mask: string, utc?: boolean, gmt?: boolean): string;
+
+    /** Entities module; maybe use `require('@maika.xyz/miu/entities')`? */
+    export namespace entities {
+        function decode(data: any, level: number): any;
+        function decodeStrict(data: any, level: number): any;
+        function encode(data: any, level: number): any;
+    }
+
+    /** valid-url module; use `require('@maika.xyz/miu/validurl')`? */
+    export namespace validurl {
+        function isUri(value: any): boolean;
+        function isHttpUri(value: any, allowHttps: boolean): boolean;
+        function isHttpsUri(value: any): boolean;
+        function isWebUri(value: any): boolean;
+    }
 
     /**
      * Convert numbers to a uptime string

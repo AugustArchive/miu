@@ -1,7 +1,7 @@
 {
     "name": "@maika.xyz/miu",
     "description": "Core components that Maika uses (extra dependencies).",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "displayName": "Miu",
     "dependencies": {
         "axios": "0.18.0"
